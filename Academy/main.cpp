@@ -271,7 +271,7 @@ void main()
 	Graduate graduate("Schreder", "Hank", 40, "Criminalistic", "WW_220", 40, 60, "How to catch Heisenberg");
 	graduate.info();
 #endif // INHERITANCE
-	
+	 
 	/*
 	---------------------------------------------------
 	1. Ad-hoc polymorphism;
