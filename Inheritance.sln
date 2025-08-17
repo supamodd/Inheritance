@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36212.18 d17.14
+VisualStudioVersion = 17.14.36212.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Inheritance", "Inheritance\Inheritance.vcxproj", "{E737F75B-0EC5-4B1C-ABDB-A2E05885EF6C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pictures", "Pictures\Pictures.vcxproj", "{E148014C-732E-48D2-A76A-887EEE30EA4C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Academy", "Academy\Academy.vcxproj", "{FA5EEB17-3462-4D61-824C-DFBEA980ECBC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TheZoo", "TheZoo\TheZoo.vcxproj", "{9DE77BEB-FF1D-4010-BE64-34E14C68E008}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AbstractGeometry", "AbstractGeometry\AbstractGeometry.vcxproj", "{74F6F956-7A43-4178-80EC-816C703923A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,22 @@ Global
 		{FA5EEB17-3462-4D61-824C-DFBEA980ECBC}.Release|x64.Build.0 = Release|x64
 		{FA5EEB17-3462-4D61-824C-DFBEA980ECBC}.Release|x86.ActiveCfg = Release|Win32
 		{FA5EEB17-3462-4D61-824C-DFBEA980ECBC}.Release|x86.Build.0 = Release|Win32
+		{9DE77BEB-FF1D-4010-BE64-34E14C68E008}.Debug|x64.ActiveCfg = Debug|x64
+		{9DE77BEB-FF1D-4010-BE64-34E14C68E008}.Debug|x64.Build.0 = Debug|x64
+		{9DE77BEB-FF1D-4010-BE64-34E14C68E008}.Debug|x86.ActiveCfg = Debug|Win32
+		{9DE77BEB-FF1D-4010-BE64-34E14C68E008}.Debug|x86.Build.0 = Debug|Win32
+		{9DE77BEB-FF1D-4010-BE64-34E14C68E008}.Release|x64.ActiveCfg = Release|x64
+		{9DE77BEB-FF1D-4010-BE64-34E14C68E008}.Release|x64.Build.0 = Release|x64
+		{9DE77BEB-FF1D-4010-BE64-34E14C68E008}.Release|x86.ActiveCfg = Release|Win32
+		{9DE77BEB-FF1D-4010-BE64-34E14C68E008}.Release|x86.Build.0 = Release|Win32
+		{74F6F956-7A43-4178-80EC-816C703923A1}.Debug|x64.ActiveCfg = Debug|x64
+		{74F6F956-7A43-4178-80EC-816C703923A1}.Debug|x64.Build.0 = Debug|x64
+		{74F6F956-7A43-4178-80EC-816C703923A1}.Debug|x86.ActiveCfg = Debug|Win32
+		{74F6F956-7A43-4178-80EC-816C703923A1}.Debug|x86.Build.0 = Debug|Win32
+		{74F6F956-7A43-4178-80EC-816C703923A1}.Release|x64.ActiveCfg = Release|x64
+		{74F6F956-7A43-4178-80EC-816C703923A1}.Release|x64.Build.0 = Release|x64
+		{74F6F956-7A43-4178-80EC-816C703923A1}.Release|x86.ActiveCfg = Release|Win32
+		{74F6F956-7A43-4178-80EC-816C703923A1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
