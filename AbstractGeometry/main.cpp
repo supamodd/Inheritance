@@ -1,6 +1,8 @@
-//AbstractGeometry
-#include<iostream>
-#include<Windows.h>
+#define _USE_MATH_DEFINES
+#include <iostream>
+#include <Windows.h>
+//#include <cmath>
+#include <conio.h>
 using namespace std;
 
 namespace Geometry
@@ -213,15 +215,103 @@ namespace Geometry
 	public:
 		Square(double side, SHAPE_TAKE_PARAMETERS) :Rectangle(side, side, SHAPE_GIVE_PARAMETERS) {}
 	};
+
+	// Circle
+	class Circle : public Shape {
+	private:
+		double radius;
+	public:
+		Circle(double radius, SHAPE_TAKE_PARAMETERS) : Shape(SHAPE_GIVE_PARAMETERS), radius(radius) {}
+
+		double get_radius() const { return radius; }
+		double get_area() const override { return M_PI * radius * radius; }
+		double get_perimeter() const override { return 2 * M_PI * radius; }
+
+		void draw() const override {
+			HWND hwnd = GetConsoleWindow();
+			HDC hdc = GetDC(hwnd);
+			HPEN hPen = CreatePen(PS_SOLID, line_width, color);
+			HBRUSH hBrush = CreateSolidBrush(color);
+
+			SelectObject(hdc, hPen);
+			SelectObject(hdc, hBrush);
+
+			// Simple circle drawing approximation using a rectangle
+			Ellipse(hdc, start_x, start_y, start_x + static_cast<int>(2 * radius), start_y + static_cast<int>(2 * radius));
+
+			DeleteObject(hBrush);
+			DeleteObject(hPen);
+			ReleaseDC(hwnd, hdc);
+		}
+
+		void info() const override {
+			cout << "Circle:" << endl;
+			cout << "Radius: " << radius << endl;
+			Shape::info();
+		}
+	};
+
+	// Triangle
+	class Triangle : public Shape {
+	private:
+		double base;
+		double height;
+	public:
+		Triangle(double base, double height, SHAPE_TAKE_PARAMETERS) : Shape(SHAPE_GIVE_PARAMETERS), base(base), height(height) {}
+
+		double get_base() const { return base; }
+		double get_height() const { return height; }
+		double get_area() const override { return 0.5 * base * height; }
+		double get_perimeter() const override { return base + height + sqrt(base * base + height * height); }
+
+		void draw() const override {
+			HWND hwnd = GetConsoleWindow();
+			HDC hdc = GetDC(hwnd);
+			HPEN hPen = CreatePen(PS_SOLID, line_width, color);
+			HBRUSH hBrush = CreateSolidBrush(color);
+
+			SelectObject(hdc, hPen);
+			SelectObject(hdc, hBrush);
+
+			// Simple triangle drawing approximation using a line
+			POINT points[3] = { {start_x, start_y + static_cast<int>(height)}, {start_x + static_cast<int>(base), start_y + static_cast<int>(height)}, {start_x + static_cast<int>(base / 2), start_y} };
+			Polygon(hdc, points, 3);
+
+
+			DeleteObject(hBrush);
+			DeleteObject(hPen);
+			ReleaseDC(hwnd, hdc);
+		}
+		void info() const override {
+			cout << "Triangle:" << endl;
+			cout << "Base: " << base << endl;
+			cout << "Height: " << height << endl;
+			Shape::info();
+		}
+	};
 }
 
 void main()
 {
 	setlocale(LC_ALL, "");
-	//Shape shape(Color::Blue);
-	Geometry::Square square(50, 800, 100, 5, Geometry::Color::Red);
-	square.info();
 
-	Geometry::Rectangle rectangle(200, 150, 550, 100, 1, Geometry::Color::Blue);
+	Geometry::Square square(50, 100, 100, 5, Geometry::Color::Red);
+	square.info();
+	cout << endl;
+
+	Geometry::Rectangle rectangle(200, 150, 300, 100, 1, Geometry::Color::Blue);
 	rectangle.info();
+	cout << endl;
+
+	//Circle object
+	Geometry::Circle circle(60, 200, 200, 3, Geometry::Color::Green);
+	circle.info();
+	cout << endl;
+
+	//Triangle object
+	Geometry::Triangle triangle(80, 50, 400, 200, 2, Geometry::Color::Yellow);
+	triangle.info();
+	cout << endl;
+
+	//_getch();
 }
