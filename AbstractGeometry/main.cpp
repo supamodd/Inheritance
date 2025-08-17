@@ -1,4 +1,4 @@
-#define _USE_MATH_DEFINES
+п»ї#define _USE_MATH_DEFINES
 #include <iostream>
 #include <Windows.h>
 //#include <cmath>
@@ -7,7 +7,7 @@ using namespace std;
 
 namespace Geometry
 {
-	enum Color	//Enumeration (Перечисление)
+	enum Color	//Enumeration (РџРµСЂРµС‡РёСЃР»РµРЅРёРµ)
 	{
 		Red = 0x000000FF,
 		Green = 0x0000FF00,
@@ -33,7 +33,7 @@ namespace Geometry
 		int start_x;
 		int start_y;
 		int line_width;
-		Color color;	//цвет фигуры
+		Color color;	//С†РІРµС‚ С„РёРіСѓСЂС‹
 	public:
 		void set_start_x(int start_x)
 		{
@@ -88,8 +88,8 @@ namespace Geometry
 		}
 		virtual void info()const
 		{
-			cout << "Площадь фигуры: " << get_area() << endl;
-			cout << "Периметр фигуры: " << get_perimeter() << endl;
+			cout << "РџР»РѕС‰Р°РґСЊ С„РёРіСѓСЂС‹: " << get_area() << endl;
+			cout << "РџРµСЂРёРјРµС‚СЂ С„РёРіСѓСЂС‹: " << get_perimeter() << endl;
 			draw();
 		}
 	};
@@ -132,7 +132,7 @@ namespace Geometry
 		void info()const override
 		{
 			cout << typeid(*this).name() << endl;
-			cout << "Сторона квадрата: " << get_side() << endl;
+			cout << "РЎС‚РѕСЂРѕРЅР° РєРІР°РґСЂР°С‚Р°: " << get_side() << endl;
 			Shape::info();
 		}
 	};*/
@@ -168,33 +168,33 @@ namespace Geometry
 		}
 		void draw()const override
 		{
-			//1) Получаем окно консоли:
+			//1) РџРѕР»СѓС‡Р°РµРј РѕРєРЅРѕ РєРѕРЅСЃРѕР»Рё:
 			HWND hwnd = GetConsoleWindow();
-			//2) Получем контекст устройства консольного окна:
-			HDC hdc = GetDC(hwnd);	//Констекст устройства (DeviceContext) - это то, на чем мы будем рисовать
+			//2) РџРѕР»СѓС‡РµРј РєРѕРЅС‚РµРєСЃС‚ СѓСЃС‚СЂРѕР№СЃС‚РІР° РєРѕРЅСЃРѕР»СЊРЅРѕРіРѕ РѕРєРЅР°:
+			HDC hdc = GetDC(hwnd);	//РљРѕРЅСЃС‚РµРєСЃС‚ СѓСЃС‚СЂРѕР№СЃС‚РІР° (DeviceContext) - СЌС‚Рѕ С‚Рѕ, РЅР° С‡РµРј РјС‹ Р±СѓРґРµРј СЂРёСЃРѕРІР°С‚СЊ
 
-			//3) Создаем карандаш:
-			HPEN hPen = CreatePen(PS_SOLID, line_width, color);	//Pen рисует контур фигуры
-			//PS_SOLID - сплошная линия;
-			//1 - толщина линии = 1 pixel;
-			//RGB(255,0,0) - линия красного цвета
+			//3) РЎРѕР·РґР°РµРј РєР°СЂР°РЅРґР°С€:
+			HPEN hPen = CreatePen(PS_SOLID, line_width, color);	//Pen СЂРёСЃСѓРµС‚ РєРѕРЅС‚СѓСЂ С„РёРіСѓСЂС‹
+			//PS_SOLID - СЃРїР»РѕС€РЅР°СЏ Р»РёРЅРёСЏ;
+			//1 - С‚РѕР»С‰РёРЅР° Р»РёРЅРёРё = 1 pixel;
+			//RGB(255,0,0) - Р»РёРЅРёСЏ РєСЂР°СЃРЅРѕРіРѕ С†РІРµС‚Р°
 
-			//4) Создаем кисть, которая выполняет заливку фигуры:
+			//4) РЎРѕР·РґР°РµРј РєРёСЃС‚СЊ, РєРѕС‚РѕСЂР°СЏ РІС‹РїРѕР»РЅСЏРµС‚ Р·Р°Р»РёРІРєСѓ С„РёРіСѓСЂС‹:
 			HBRUSH hBrush = CreateSolidBrush(color);
 
-			//5) Выбираем чем и на чем мы будем рисовать:
+			//5) Р’С‹Р±РёСЂР°РµРј С‡РµРј Рё РЅР° С‡РµРј РјС‹ Р±СѓРґРµРј СЂРёСЃРѕРІР°С‚СЊ:
 			SelectObject(hdc, hPen);
 			SelectObject(hdc, hBrush);
 
-			//6) Вызываем нужную функцию для рисования фигуры:
+			//6) Р’С‹Р·С‹РІР°РµРј РЅСѓР¶РЅСѓСЋ С„СѓРЅРєС†РёСЋ РґР»СЏ СЂРёСЃРѕРІР°РЅРёСЏ С„РёРіСѓСЂС‹:
 			::Rectangle(hdc, start_x, start_y, start_x + side_1, start_y + side_2);
 			//	:: - Global Scope
 
-			//?) Удаляем карандаш и кисть, поскольку они тоже занимает ресурсы:
+			//?) РЈРґР°Р»СЏРµРј РєР°СЂР°РЅРґР°С€ Рё РєРёСЃС‚СЊ, РїРѕСЃРєРѕР»СЊРєСѓ РѕРЅРё С‚РѕР¶Рµ Р·Р°РЅРёРјР°РµС‚ СЂРµСЃСѓСЂСЃС‹:
 			DeleteObject(hBrush);
 			DeleteObject(hPen);
 
-			//?) Контекст устройства занимает ресурсы, которые нужно освободить:
+			//?) РљРѕРЅС‚РµРєСЃС‚ СѓСЃС‚СЂРѕР№СЃС‚РІР° Р·Р°РЅРёРјР°РµС‚ СЂРµСЃСѓСЂСЃС‹, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ РѕСЃРІРѕР±РѕРґРёС‚СЊ:
 			ReleaseDC(hwnd, hdc);
 		}
 		Rectangle(double side_1, double side_2, SHAPE_TAKE_PARAMETERS) :Shape(SHAPE_GIVE_PARAMETERS)
@@ -205,8 +205,8 @@ namespace Geometry
 		void info()const override
 		{
 			cout << typeid(*this).name() << endl;
-			cout << "Сторона 1: " << get_side_1() << endl;
-			cout << "Сторона 2: " << get_side_2() << endl;
+			cout << "РЎС‚РѕСЂРѕРЅР° 1: " << get_side_1() << endl;
+			cout << "РЎС‚РѕСЂРѕРЅР° 2: " << get_side_2() << endl;
 			Shape::info();
 		}
 	};
