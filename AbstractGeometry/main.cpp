@@ -217,10 +217,10 @@ namespace Geometry
 	};
 
 	// Circle
-	class Circle : public Shape {
-	private:
-		double radius;
+	class Circle : public Shape 
+	{
 	public:
+		double radius;
 		Circle(double radius, SHAPE_TAKE_PARAMETERS) : Shape(SHAPE_GIVE_PARAMETERS), radius(radius) {}
 
 		double get_radius() const { return radius; }
@@ -244,7 +244,8 @@ namespace Geometry
 			ReleaseDC(hwnd, hdc);
 		}
 
-		void info() const override {
+		void info() const override
+		{
 			cout << "Circle:" << endl;
 			cout << "Radius: " << radius << endl;
 			Shape::info();
@@ -252,11 +253,11 @@ namespace Geometry
 	};
 
 	// Triangle
-	class Triangle : public Shape {
-	private:
+	class Triangle : public Shape
+	{
+	public:
 		double base;
 		double height;
-	public:
 		Triangle(double base, double height, SHAPE_TAKE_PARAMETERS) : Shape(SHAPE_GIVE_PARAMETERS), base(base), height(height) {}
 
 		double get_base() const { return base; }
@@ -264,7 +265,8 @@ namespace Geometry
 		double get_area() const override { return 0.5 * base * height; }
 		double get_perimeter() const override { return base + height + sqrt(base * base + height * height); }
 
-		void draw() const override {
+		void draw() const override 
+		{
 			HWND hwnd = GetConsoleWindow();
 			HDC hdc = GetDC(hwnd);
 			HPEN hPen = CreatePen(PS_SOLID, line_width, color);
@@ -282,7 +284,8 @@ namespace Geometry
 			DeleteObject(hPen);
 			ReleaseDC(hwnd, hdc);
 		}
-		void info() const override {
+		void info() const override 
+		{
 			cout << "Triangle:" << endl;
 			cout << "Base: " << base << endl;
 			cout << "Height: " << height << endl;
@@ -303,12 +306,10 @@ void main()
 	rectangle.info();
 	cout << endl;
 
-	//Circle object
 	Geometry::Circle circle(60, 200, 200, 3, Geometry::Color::Green);
 	circle.info();
 	cout << endl;
 
-	//Triangle object
 	Geometry::Triangle triangle(80, 50, 400, 200, 2, Geometry::Color::Yellow);
 	triangle.info();
 	cout << endl;
